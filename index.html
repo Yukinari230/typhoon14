@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ここにページの概要が入ります。">
+
+        <title>PyScriptテスト</title>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        <py-env>
+            - plotly
+        </py-env>
+    </head>
+ <body>
+
+<py-script>
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <py-script>
+import plotly.graph_objects as go
+
+fig = go.Figure(data=go.Scattergeo(
+    lat = [18.37,17.9,18.89,19.06,20.10],
+    lon = [138.06,140.6,138.14,136.69,136.51],
+    marker_size=20,
+    marker_color='red',
+    marker_symbol='star'
+))
+
+fig.add_scattergeo(lat = [17.6,20.6,23,25,26.5,28.5,29.7,]
+                  ,lon = [140.5,137.3,133.2,129.5,126,120,118]
+                  ,mode='lines'
+                  ,line=dict(width=5,color='cyan')
+                      )
+
+
+fig.add_scattergeo(lat=[]
+                  ,lon=[]
+                  ,marker_size=20
+                  ,marker_color='blue'
+                  ,marker_symbol='star'
+                  )
+fig.add_scattergeo(lat=[]
+                  ,lon=[]
+                  ,mode='lines'
+                  ,line=dict(width=5,color='cyan'),
+                  )
+
+fig.update_layout(
+    title_text = 'Typhoon #10 maximum wind speed 96 knot',
+    showlegend = False,
+    geo = dict(
+        resolution = 50,
+        showland = True,
+        showlakes = True,
+        landcolor = 'rgb(204, 204, 204)',
+        countrycolor = 'rgb(204, 204, 204)',
+        lakecolor = 'rgb(255, 255, 255)',
+        projection_type = "equirectangular",
+        coastlinewidth = 2,
+        lataxis = dict(
+            range = [12,40],
+            showgrid = True,
+            dtick = 10
+        ),
+        lonaxis = dict(
+            range = [120,145],
+            showgrid = True,
+            dtick = 20
+        ),
+    )
+)
+
+fig
+
+
+</py-script>
+
+</body>
+</html>
